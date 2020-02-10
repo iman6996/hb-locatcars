@@ -5,10 +5,8 @@ use App\Controller\UsersController;
 
 $router = $container->getRouter();
 
-$router->get('/hello', function() {
-    echo "hello world";
-});
-
+$router->setNamespace('App\Controller');
+$router->get('/cars' ,'CarsController@index');
 
 
 $router->run();
