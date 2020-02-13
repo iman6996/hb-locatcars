@@ -4,12 +4,21 @@ use App\Service\ServiceContainer;
 
 $configuration = [
     'db' => [
-        'dsn' => 'mysql:dbname=hblocatcars;localhost;port=3306;chartset=utf8',
+        'dsn' => 'mysql:dbname=cars;localhost;port=3306;charset=utf8',
         'username' => 'root',
-        'password' => 'root',
+        'password' => '',
     ]
 ];
-require_once __DIR__ . '/db.php';
+
 require_once __DIR__ . '/../vendor/autoload.php';
 $container = new ServiceContainer($configuration);
+/* 
+$loader = new \Twig\Loader\ArrayLoader([
+    'index' => 'Hello {{ name }}!',
+]);
+$twig = new \Twig\Environment($loader);
+echo $twig->render('index', ['name' => 'Fabien']);
+die; */
+
 require_once __DIR__ . '/routes.php';
+

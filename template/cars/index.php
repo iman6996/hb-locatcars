@@ -15,7 +15,7 @@
 <h1>Les Carrrrrrrrrrrrrrrrrs</h1>
 <ul>
 <?php foreach($cars as $car ): ?>
-<li><?=$car["brand"]?><?php echo $car["model"]?></li>
+<li><?=$car->getBrand()?><?php echo $car->getModel()?></li>
 <?php endforeach ?>
 </ul>
     <!-- Optional JavaScript -->
