@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block title %}
+Formulaire utilisateur
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Formulaires</h1>
+        <form action="{{env.base_path}}/users/" method="POST">
+            <div class="row mb-3">
+                <div class="col">
+                    <input id="formLastname" name="lastname" type="text" class="form-control" placeholder="Lastname">
+                </div>
+                <div class="col">
+                    <input id="formFirstname" name= "firstname" type="text" class="form-control" placeholder="Firstname">
+                </div>
+                <input class="btn-primary" type="submit" value="Ajouter">
+            </div>
+        </form>
+    </div>
+    {% endblock  %}

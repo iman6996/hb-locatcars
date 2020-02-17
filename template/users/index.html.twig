@@ -9,10 +9,14 @@ Listes des utilisateurs
 <ul>
     {% for user in users %}
     <li>
-        <a href="{{env.base_path}}/user/{{user.id}}">
+        <a href="{{env.base_path}}/users/{{user.id}}">
+            {{user.id}} <br>
             {{user.lastname}} {{user.firstname}} <hr>
         </a>
+        
     </li>
     {% endfor %}
 </ul>
+<a href="{{env.base_path ~ 'users/new/' ~ car.id}}">
+<input type="submit" value="Ajouter un utilisateur"></a>
 {% endblock %}

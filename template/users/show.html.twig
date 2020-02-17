@@ -1,19 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-Liste d'un utilisateur
+Details utilisateur
 {% endblock %}
 {% block content %}
 <ul>
     <li>
-        <a href="{{env.base_path}}/user/ {{user.id}}">
-            {{user.firstname}}
-            {{user.lastname}}
-        </a>
+
+        <div class="m-2">{{user.id}} <br>
+        {{user.firstname}} <br>
+        {{user.lastname}}</div>
+        <a href="{{env.base_path}}/user/edit/{{user.id}}"> <button class="btn-primary-danger">Modifier</button></a>
     </li>
 </ul>
 {% endblock  %}
-
-
-
-
-
