@@ -6,7 +6,9 @@ use Bramus\Router\Router;
 use PDO;
 use App\Service\CarManager;
 use App\Service\UserManager;
-
+use Error;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class ServiceContainer
 {
@@ -16,6 +18,7 @@ class ServiceContainer
     private $CarManager;
     private $configuration;
     private $UserManager;
+    private $twig;
 
 
 
@@ -62,5 +65,21 @@ class ServiceContainer
         }
         return $this->UserManager;
 
+    } 
+    public function getTwig() {
+
+        if ($this->twig === null) {
+            try {
+                // On dit que nos templates seront dans le dossier template
+                $loader = new FilesystemLoader(__DIR__ . '/../../template');
+                $twig = new Environment($loader);
+                $twig->addGlobal('env', $this->configuration['env']);
+                $this->twig = $twig;
+            }
+            catch(Error $e) {
+                var_dump($e);
+            }
+        }
+        return $this->twig;
     }
 }

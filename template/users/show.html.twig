@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Liste d'un utilisateur
+{% endblock %}
+{% block content %}
+<ul>
+    <li>
+        <a href="{{env.base_path}}/user/ {{user.id}}">
+            {{user.firstname}}
+            {{user.lastname}}
+        </a>
+    </li>
+</ul>
+{% endblock  %}
+
+
+
+
+

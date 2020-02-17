@@ -7,6 +7,9 @@ $configuration = [
         'dsn' => 'mysql:dbname=cars;localhost;port=3306;charset=utf8',
         'username' => 'root',
         'password' => '',
+    ],
+    'env' =>[
+        'base_path'=> 'http://localhost/Test%20php/hb-locatcars/'
     ]
 ];
 

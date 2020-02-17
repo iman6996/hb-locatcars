@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Service;
 
 use App\Model\User;
 use PDO;
 
-class UserManager implements ManagerInterface {
+class UserManager implements ManagerInterface
+{
 
     // Le manager a besoin de PDO
     private $pdo;
@@ -23,7 +25,7 @@ class UserManager implements ManagerInterface {
      */
     public function arrayToObject(array $array)
     {
-        $user = new user;
+        $user = new User;
         $user->setId($array['id']);
         $user->setLastname($array['lastname']);
         $user->setFirstname($array['firstname']);
@@ -32,7 +34,7 @@ class UserManager implements ManagerInterface {
     }
 
     /**
-     * @return Car[]
+     * @return User[]
      */
     public function findAll()
     {
@@ -44,7 +46,7 @@ class UserManager implements ManagerInterface {
 
         $users = [];
 
-        foreach($data as $d) {
+        foreach ($data as $d) {
             $users[] = $this->arrayToObject($d);
         }
 
@@ -57,17 +59,16 @@ class UserManager implements ManagerInterface {
      */
     public function findOneById(int $id)
     {
-        $query = "SELECT lastname,firstname FROM `user` WHERE id = $id";
+        $query = "SELECT * FROM user WHERE id = :id";
         $statement = $this->pdo->prepare($query);
-        $statement->execute();
+        $statement->execute(
+            [
+                "id" => $id
+            ]
+        );
         $data = $statement->fetch(PDO::FETCH_ASSOC);
-        $users = [];
-        
-
-        foreach($data as $d) {
-            $users[] = $this->arrayToObject($d);
-        }
-        return $users;
+        $user = $this->arrayToObject($data);
+        return $user;
     }
 
     /**
